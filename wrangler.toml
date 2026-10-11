@@ -1,0 +1,45 @@
+"$schema" = "node_modules/wrangler/config-schema.json"
+main = ".open-next/worker.js"
+name = "menu"
+compatibility_date = "2026-10-10"
+compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+
+workers_dev = false
+preview_urls = false
+
+[[routes]]
+pattern = "menu.atocem.com"
+custom_domain = true
+
+[[kv_namespaces]]
+binding = "KV"
+id = "c36b8cec685b4d7f9479d781c0490c7f"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "db-menu"
+database_id = "4c570d26-a425-4738-991b-9d081aa6e33e"
+migrations_table = "__d1_migrations"
+migrations_dir = "src/db/migrations"
+migrations_pattern = "src/db/migrations/*/migration.sql"
+remote = false
+
+[placement]
+mode = "smart"
+
+[images]
+binding = "IMAGES"
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+[secrets]
+required = []
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[observability.logs]
+invocation_logs = true
